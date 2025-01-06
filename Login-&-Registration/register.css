@@ -1,0 +1,134 @@
+/* Body and Background Styles */
+body {
+    background-image: url('../images/background.jpg');
+    background-color: #141414;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+
+/* Navbar Styles */
+nav {
+    background-color: transparent;
+    padding: 10px;
+    text-align: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+nav a.home-link {
+    color: white;
+    /* Link color */
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: transparent;
+    /* Background for button */
+    border-radius: 5px;
+    /* Rounded corners */
+    transition: background-color 0.3s ease;
+    /* Smooth hover transition */
+}
+
+nav a.home-link:hover {
+    background-color: transparent;
+}
+
+/* Registration Container */
+.register-container {
+    width: 50%;
+    margin: 0 auto;
+    /* Centered container */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Slight transparency for form background */
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    /* Subtle shadow effect */
+}
+
+/* Heading Style */
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #333;
+    /* Dark background for inputs */
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    /* Rounded corners for inputs */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    /* Adds some depth to the inputs */
+}
+
+/* Button Styling */
+button {
+    padding: 10px;
+    background-color: #047ed0;
+    /* Registration button color */
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    /* Rounded corners for button */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Smooth hover transition */
+}
+
+button:hover {
+    background-color: #0407d0;
+    /* Darker button background on hover */
+}
+
+/* Sign-in Link */
+.sign-in {
+    margin-top: 20px;
+}
+
+.sign-in a {
+    color: #ecf09f;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.sign-in a:hover {
+    color: #3d77ed;
+    /* Darker link color on hover */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 600px) {
+    .register-container {
+        width: 80%;
+        /* Adjusts width for smaller screens */
+        margin: 20px auto;
+    }
+
+    nav a.home-link {
+        font-size: 16px;
+        /* Slightly smaller text for smaller screens */
+    }
+}
