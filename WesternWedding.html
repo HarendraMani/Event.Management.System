@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Wedding || Invitation-E-Card</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            background: url('images/Wedbg.jpg') no-repeat center center/cover;
+            text-align: center;
+        }
+
+        #container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 15px 240px 0 0;
+            overflow: hidden;
+            box-shadow: 12px 13px 14px rgba(0, 0, 0, 0.9);
+            filter: drop-shadow(0 0 10px #000);
+            animation: glow 3s alternate infinite;
+            background: url('images/Wedbg.jpg') no-repeat center center/cover;
+            position: relative;
+            color: white;
+        }
+
+        @keyframes glow {
+            0% {
+                filter: drop-shadow(0 0 10px #000);
+            }
+
+            100% {
+                filter: drop-shadow(0 0 10px #fff);
+            }
+        }
+
+        .slide {
+            max-width: 100%;
+            border-radius: 9px 219px 5px 8px;
+            box-shadow: 12px 13px 14px rgba(0, 0, 0, 0.9);
+            display: none;
+        }
+
+        .title,
+        #details,
+        h2,
+        #footer {
+            user-select: all;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .title {
+            font-size: 40px;
+            margin-top: 20px;
+        }
+
+        span {
+            color: #ff00cf;
+        }
+
+        #details {
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 2px 2px 10px rgba(211, 34, 34, 0.1);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: gold;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #footer {
+            background-color: red;
+            color: #fff;
+            padding: 5px;
+            margin-top: 10px;
+        }
+
+        #downloadBtn {
+            background-color: #fcce00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div id="container">
+            <img class="slide" src="images/Wed1.jpg" alt="">
+            <img class="slide" src="images/Wed.jpg" alt="">
+            <img class="slide" src="images/Wed2.jpg" alt="">
+            <img class="slide" src="images/Wed3.jpg" alt="">
+            <h1 class="title" contenteditable="false"><span>Marriage</span> Invitation</h1>
+            <h2 contenteditable="true">Groom & Bride</h2>
+            <div id="details" contenteditable="true">
+                <h3 contenteditable="false">Ceremony Details</h3>
+                <p>Name: <b>Prachi Sharma</b></p>
+                <p>Date: <b>April 7, 2025</b></p>
+                <p>Time: <b>6:00 PM</b></p>
+                <p contenteditable="false">Venue:
+                    <a href="https://maps.app.goo.gl/MzM2GpWXpiwnDmXr5" target="_blank"
+                        style="color: #00ff00; text-decoration: underline; cursor: pointer;">
+                        <i class="fas fa-map-marker-alt"></i><b> Canbara</b>
+                    </a>
+                </p>
+                <p contenteditable="false">Dress Code: Formal</p>
+            </div>
+            <div id="footer" contenteditable="false">
+                <p>"We can't wait to share this special moment with you!"</p>
+            </div>
+            <button id="downloadBtn" onclick="downloadInvitation()">Download Invitation</button>
+        </div>
+    </center>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.style.display = "none");
+            slides[index].style.display = "block";
+        }
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+        setInterval(nextSlide, 3000);
+        showSlide(currentIndex);
+
+        function downloadInvitation() {
+            html2canvas(document.documentElement, {
+                useCORS: true,
+                scale: 3,
+                backgroundColor: "black"
+            }).then(canvas => {
+                let imageData = canvas.toDataURL("image/jpeg", 1.0);
+                let link = document.createElement("a");
+                link.download = "Invitation E-Card.jpg";
+                link.href = imageData;
+                link.click();
+            });
+        }
+
+        // Capture Ctrl + S to trigger image download
+        document.addEventListener("keydown", function (event) {
+            if (event.ctrlKey && event.key === "s") {
+                event.preventDefault();
+                downloadInvitation();
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
